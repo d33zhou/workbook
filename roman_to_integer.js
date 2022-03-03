@@ -2,7 +2,7 @@
  * @param {string} s
  * @return {number}
  */
- var romanToInt = function(s) {
+ const romanToInt = function(s) {
   // read characters from left to right (high to low)
   // add to a counter the value based on the letter
   // return the sum of the counter
