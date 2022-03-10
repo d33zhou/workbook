@@ -8,7 +8,7 @@ const addBinary = function (a, b) {
 
   let total = convertToValue(a) + convertToValue(b);
 
-  // return convertToBinary(total);
+  return convertToBinary(total);
 };
 
 const convertToValue = function (binary) {
@@ -44,9 +44,9 @@ const convertToBinary = function (value) {
 
   let binary = "";
   let remainingValue = value;
+  const digits = power + 1;
 
-  while (remainingValue > 0 && power >= 0) {
-    console.log(remainingValue);
+  for (let i = 0; i < digits; i++) {
     if (remainingValue >= 2 ** power) {
       binary += "1";
       remainingValue -= 2 ** power;
@@ -60,9 +60,9 @@ const convertToBinary = function (value) {
   return binary;
 };
 
-// console.log(addBinary("11", "1"));
+console.log(addBinary("11", "1"));
 // console.log(convertToValue("11") + convertToValue("1"));
-console.log(convertToBinary(16));
+// console.log(convertToBinary(15));
 // console.log(convertToBinary(8));
 // console.log(convertToBinary(5));
 // console.log(convertToBinary(4));
