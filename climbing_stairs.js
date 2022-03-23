@@ -3,14 +3,25 @@
  * @return {number}
  */
 const climbStairs = function (n) {
-  let counter = 0;
-
-  if (n <= 1) {
-    return n;
+  if (n === 0) {
+    return 0;
+  } else if (n === 1) {
+    return 1;
+  } else if (n === 2) {
+    return 2;
   } else {
-    //recursive
+    if (cache[n]) {
+      return cache[n];
+    } else {
+      cache[n] = climbStairs(n - 2) + climbStairs(n - 1);
+      return cache[n];
+    }
   }
 };
 
-console.log(climbStairs(2)); // 2
-console.log(climbStairs(3)); // 3
+const cache = {};
+
+// console.log(climbStairs(2)); // 2
+// console.log(climbStairs(3)); // 3
+// console.log(climbStairs(10)); // 89
+console.log(climbStairs(20)); // 10946
