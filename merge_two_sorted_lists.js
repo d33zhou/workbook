@@ -12,29 +12,24 @@
  */
 const mergeTwoLists = (list1, list2) => {
   let outputList = new ListNode(0); //dummy head node
+  let currentNode = outputList;
+
   let pointer1 = list1;
   let pointer2 = list2;
-  let currentNode = outputList;
-  let previousNode = currentNode;
 
-  while (pointer1 !== null && pointer2 !== null) {
+  while (pointer1 && pointer2) {
     if (pointer1.val <= pointer2.val) {
-      currentNode = pointer1;
+      currentNode.next = pointer1;
       pointer1 = pointer1.next;
     } else {
-      currentNode = pointer2;
+      currentNode.next = pointer2;
       pointer2 = pointer2.next;
     }
 
-    previousNode.next = currentNode;
-    previousNode = currentNode;
+    currentNode = currentNode.next;
   }
 
-  if (pointer1 !== null) {
-    previousNode.next = pointer1;
-  } else if (pointer2 !== null) {
-    previousNode.next = pointer2;
-  }
+  currentNode.next = pointer1 || pointer2;
 
   return outputList.next;
 };
