@@ -10,18 +10,12 @@
  * @return {ListNode}
  */
 const deleteDuplicates = function (head) {
-  const map = {};
-
   let pointer = head;
-  let prev = null;
 
-  while (pointer) {
-    if (map[pointer.val] !== undefined) {
-      pointer = pointer.next;
-      prev.next = pointer;
+  while (pointer && pointer.next) {
+    if (pointer.val === pointer.next.val) {
+      pointer.next = pointer.next.next;
     } else {
-      map[pointer.val] = 1;
-      prev = pointer;
       pointer = pointer.next;
     }
   }
